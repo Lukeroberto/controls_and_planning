@@ -3,19 +3,23 @@
 # Simple simulation of a dynamical system
 # TODO: generics to run the system and controller separately
 
-using DifferentialEquations
-using Plots
+# Import all local files
+include("pendulum_dynamics.jl")
 using pendulum_dynamics
 
+# Import specific libraries
+using DifferentialEquations
+using Plots
+
 # Parameters
-m = 1 # Kg
-g = 1 # m/s^2
-l = 1 # m
-b = 1 # drag coeff
-J = 1 # kg*m^2
+m = 1.0 # Kg
+g = 1.0 # m/s^2
+l = 1.0 # m
+b = 1.0# drag coeff
+J = 1.0 # kg*m^2
 
 # Parameter vector
-p = (m, g, l, b, J, τ)
+p = (m, g, l, b, J)
 
 
 # Time Interval
@@ -34,6 +38,5 @@ sol = solve(prob, reltol=1e-6, abstol=1e-6)
 pyplot()
 plt = plot(sol[1,:],sol[2,:])
 plt2 = plot(sol[1,:])
-display(plt)
-display(plt2)
+display(plot(plt, plt2))
 # print(sol(1:10))

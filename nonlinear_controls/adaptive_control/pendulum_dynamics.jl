@@ -1,8 +1,6 @@
 module pendulum_dynamics
 
-function τ(x, t)
-    return 0.0
-end
+τ(x,t) = 0.0
 
 # System to integrate
 function pendulum(dx, x, p, t)
@@ -16,6 +14,6 @@ function pendulum(dx, x, p, t)
     dx[2] = -(b/J)*x[2]*abs(x[2]) - (m*g*l/J)*sin(x[1]) + τ(x,t)
 end
 
-export τ, pendulum
+export pendulum
 
 end
